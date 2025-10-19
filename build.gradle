@@ -47,26 +47,15 @@ repositories {
 // }
 
 processResources {
-    // Makes sure mcmod.info gets version + metadata
-    inputs.property "version", project.version
-    inputs.property "modid", archivesBaseName
-
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-
-        expand(
-                'modid': archivesBaseName,
-                'name': project.name ?: "Example Mod",
-                'description': "A Forge 1.7.10 mod by GlowingFederal.",
-                'version': project.version,
-                'credits': "Made by GlowingFederal",
-                'authors': "GlowingFederal",
-                'url': "https://github.com/GlowingFederal/${archivesBaseName.capitalize()}",
-                'dependencies': "required-after:Forge@[10.13.4.1614,)"
-        )
     }
-
-    // Repack any *_at.cfg files correctly
     rename '(.+)_at.cfg', 'META-INF/$1_at.cfg'
 }
+
+
 
