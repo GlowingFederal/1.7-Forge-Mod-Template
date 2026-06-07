@@ -16,7 +16,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.1.+') {
+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.0.+') {
             changing = true
         }
     }
@@ -38,7 +38,7 @@ targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenCentral()
-    maven { url = "https://maven.minecraftforge.net" }
+    maven { url = "https://maven.minecraftforge.net/" }
 }
 
 // Dependencies can be added here, e.g.
